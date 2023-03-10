@@ -10,7 +10,7 @@ const Chat = lazy(() => import('./views/chat.view'))
 
 const Loading = () => <p>Cargando ...</p>;
 
-const socket = io.connect("http://lolcahost:5000")
+const socket = io.connect("http://35.86.122.40:5000")
 
 type Props = {
   id: String
