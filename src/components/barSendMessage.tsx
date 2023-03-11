@@ -20,7 +20,7 @@ const BarSendMessage = ({ socket }: Props) => {
 
   return (
     <div className="py-5 text-xs">
-      <form className='px-5 flex gap-1' onSubmit={handleSubmit}>
+      <form className='md:px-5 flex gap-1' onSubmit={handleSubmit}>
         <input
           value={message}
           onChange={(e) => setMessage(e.target.value)}

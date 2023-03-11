@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { FaComments } from 'react-icons/fa'
 import { useNavigate } from 'react-router-dom';
-import { useAppSelector, useAppDispatch } from '../store/hooks'
+import { useAppDispatch } from '../store/hooks'
 import { set } from "../store/authSlice";
 import { Socket } from 'socket.io-client';
 
@@ -21,7 +21,7 @@ const Index = ({ socket }: Props) => {
     }
 
     return (
-        <div className="flex w-full justify-center items-center h-screen">
+        <div className="flex w-full justify-center items-center h-screen bg-slate-200">
             <div className="m-auto w-11/12 md:w-1/4">
                 <div className="w-full p-2 bg-white border border-gray-200 rounded-lg shadow sm:p-6 md:p-8">
                     <div className="py-16 space-y-4">

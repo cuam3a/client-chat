@@ -1,9 +1,8 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { useAppSelector, useAppDispatch } from '../store/hooks'
 import { setStatus, logout } from "../store/authSlice";
-import { addUser, addMessage } from "../store/chatSlice";
 import UsersList from '../components/usersList';
-import { FaSignOutAlt } from 'react-icons/fa';
+import { FaSignOutAlt, FaComments } from 'react-icons/fa';
 import { Socket } from 'socket.io-client';
 import BarSendMessage from '../components/barSendMessage';
 import { useNavigate } from 'react-router-dom';
@@ -35,11 +34,15 @@ const Chat = ({ socket }: Props) => {
             <header>
                 <nav className=" relative flex w-full flex-wrap items-center justify-between py-3 text-neutral-200 lg:flex-wrap lg:justify-start">
                     <div className="flex w-full flex-wrap items-center justify-center px-6">
-                        <div className="flex-grow flex-row items-center md:!flex md:basis-auto justify-center md:justify-start">
-                            <label className='w-full md:w-1/6 flex justify-center font-bold'>NOMBRE: {auth.nickname}</label>
+                        <div className="flex-grow flex-row items-center md:!flex md:basis-auto justify-center md:justify-start text-base">
+                            
+                            <label className='w-full md:w-1/6 flex justify-center font-bold'>
+                                <FaComments size={25} className="mx-2"/>
+                                NOMBRE: {auth.nickname}
+                            </label>
                             <select 
                                 defaultValue={auth.status} onChange={handleChangeStatus}
-                                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg flex w-2/3 mx-auto md:mx-0 md:w-1/6 p-2.5"
+                                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg flex w-2/3 mx-auto md:mx-0 md:w-1/6 p-1.5"
                             >
                                 <option value="Conectado">CONECTADO</option>
                                 <option value="Ausente">AUSENTE</option>
@@ -76,7 +79,7 @@ const Chat = ({ socket }: Props) => {
             </header>
             <main className='h-5/6'>
                 <div className="flex flex-col md:flex-row h-full">
-                    <nav className='bg-gray-300 mt-2 h-28 md:h-full '>
+                    <nav className='bg-slate-200 mt-2 h-28 md:h-full '>
                         <div className='md:relative w-full md:w-80 h-full content-center md:content-start scroll-smooth md:scroll-auto overflow-auto'>
                             <div className=' md:fixed md:left-0 content-center md:content-start text-left justify-between md:w-80'>
                                 <UsersList />
@@ -84,13 +87,16 @@ const Chat = ({ socket }: Props) => {
                         </div>
                     </nav>
                     <section className="flex w-full h-full">
-                        <div className="main-content flex flex-col w-full bg-gray-100 md:mt-2 h-full pt-1 md:pt-0">
+                        <div className="main-content flex flex-col w-full bg-white md:mt-2 h-full pt-1 md:pt-0">
                             <ChatPanel />
                             <BarSendMessage socket={socket} />
                         </div>
                     </section>
                 </div>
             </main>
+            <footer className='relative flex w-full flex-wrap items-center justify-center py-3 text-neutral-200'>
+                <div className='pt-3'>Derechos Reservados @ <a href='https://resume-app-two.vercel.app/' target="_blank">GCUAMEA</a></div>
+            </footer>
         </div>
     )
 }
