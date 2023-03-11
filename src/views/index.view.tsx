@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { FaComments } from 'react-icons/fa'
 import { useNavigate } from 'react-router-dom';
 import { useAppDispatch } from '../store/hooks'
@@ -17,6 +17,7 @@ const Index = ({ socket }: Props) => {
     const handleSubmit = () => {
         dispatch(set({ id: socket.id, nickname, status: 'Conectado' }))
         socket.emit("newUser", { nickname, id: socket.id, status: 'Conectado' })
+        socket.emit("message", { id: `${socket.id}${Math.random()}`, nickname: nickname, message:'', type: 'connect' })
         navigate('/chat')
     }
 

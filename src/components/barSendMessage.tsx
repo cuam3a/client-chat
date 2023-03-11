@@ -10,11 +10,10 @@ type Props = {
 const BarSendMessage = ({ socket }: Props) => {
   const [message, setMessage] = useState<string>('')
   const auth = useAppSelector(state => state.auth)
-  const dispatch = useAppDispatch()
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    socket.emit("message", { id: `${auth.id}${Math.random()}`, nickname: auth.nickname, message })
+    socket.emit("message", { id: `${auth.id}${Math.random()}`, nickname: auth.nickname, message, type: 'message' })
     setMessage('')
   }
 

@@ -8,6 +8,7 @@ type message = {
     id: string
     nickname: string
     message: string
+    type: string
 }
 
 type chatState = {
