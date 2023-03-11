@@ -10,7 +10,7 @@ const Chat = lazy(() => import('./views/chat.view'))
 
 const Loading = () => <p>Cargando ...</p>;
 
-const socket = io.connect("http://35.86.122.40:5000")
+const socket = io.connect("https://server-chat.herokuapp.com/")
 
 type Props = {
   id: String
